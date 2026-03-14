@@ -1,0 +1,13 @@
+Buatlah program menggunakan **bahasa C** untuk mendukung operasional Kafetaria IT Del
+Program digunakan untuk mencatat pesanan makanan dan minuman serta menghitung total pembayaran secara otomatis.
+Program dijalankan pada komputer kasir kafetaria IT Del. Pengguna memasukkan **kode menu** dan **jumlah pesanan**.
+
+1. Tampilkan daftar menu beserta harga.
+2. Pengguna memasukkan kode menu dan jumlah pesanan.
+3. Program menghitung subtotal setiap pesanan.
+4. Input dapat dilakukan berulang hingga pengguna memasukkan **END**.
+5. Program menampilkan **struk pembayaran** yang berisi daftar pesanan dan total harga.
+
+* Gunakan bahasa Contoh
+* Gunakan percabangan untuk menentukan menu.
+* Gunakan perulangan untuk membaca input sampai END

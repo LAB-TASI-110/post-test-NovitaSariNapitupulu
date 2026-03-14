@@ -1,0 +1,24 @@
+Buatlah sebuah program menggunakan bahasa C untuk menghitung total stok barang berdasarkan kategori rak gudang.
+ masalah nya:Data stok barang disimpan dalam sebuah rak gudang dengan pola kategori yang berulang seperti pada gambar. Setiap posisi stok termasuk ke dalam salah satu kategori barang.
+ Program harus membaca input berupa
+Jumlah total data stok N.
+Deret stok barang sebanyak N bilangan bulat (s1, s2, ...)
+Sebuah kode kategori barang yang ingin dihitung total stoknya.
+jadi Data stok disimpan dalam pola kategori yang berulang setiap 3 posisi.
+nah kategorinya  
+Kategori ditentukan berdasarkan posisi indeks
+Kategori A → posisi ke 1, ... dan kategori selanjutnya
+
+Programnya harus manampilkan  hanya stok yang termasuk dalam kategori yang diminta.
+
+Input Format
+Baris pertama: bilangan bulat N
+Baris kedua: N bilangan bulat sebagai stok barang
+Baris ketiga: kode kategori barang (A, B, atau C)
+Output Format:
+Sebuah bilangan bulat yang merupakan total stok barang dari kategori yang diminta
+Ketentuan Implementasi:
+Gunakan bahasa pemrograman C
+Gunakan array untuk menyimpan stok barang
+Gunakan perulangan (for) untuk membaca data dan menghitung total
+

@@ -1,0 +1,39 @@
+Buatlah program menggunakan bahasa C untuk sistem pengiriman paket Del-Express.
+Program harus membaca input berupa:
+Kode kota tujuan
+Berat paket Butet (kg)
+Kode kota tujuan berikutnya
+Berat paket Butet berikutnya
+dan seterusnya hingga kode END.
+Setiap kali membaca satu kode kota dan berat paket Butet:
+Berat paket Ucok selalu 2 kg lebih berat dari Butet.
+Hitung total berat paket = berat Butet + berat Ucok.
+Setelah itu tentukan ongkos kirim per kg berdasarkan kode kota menggunakan struktur kontrol seperti if atau switch.
+Contoh kode kota yang digunakan:
+MDN
+JKT
+BLG
+Hitung:
+Total berat
+Total ongkos kirim = total berat × harga per kg kota tujuan
+Tambahkan promo dengan ketentuan:
+Jika total berat ≥ 10 kg → mendapat promo “Diskon 10%”
+Jika total berat ≥ 5 kg → mendapat promo “Diskon 5%
+Selain itu → “Tidak ada promo”
+Program harus menampilkan Struk Pembayaran dengan format:
+Struk Pembayaran
+Kota Tujuan: 
+Berat Paket Butet: kg
+Berat Paket Ucok:  kg
+Total Berat: kg
+Total Ongkos Kirim: Rp 
+Promo
+Gunakan:stdio.hstring.hperulangan whilepercabangan if atau switch.
+Contoh input:
+MDN
+5
+JKT
+3
+BLG
+4
+END(maka kalau dia ENDmaka program akan  berhenti)
