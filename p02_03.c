@@ -1,73 +1,98 @@
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
+
+// Struktur untuk data Menu
+struct Menu {
+    int id;
+    char nama[30];
+    int harga;
+};
+
+// Struktur untuk mencatat pesanan yang dibeli
+struct Keranjang {
+    char nama[30];
+    int qty;
+    int subtotal;
+};
 
 int main() {
-    char kode[10];
-    int jumlah;
-    int subtotal = 0;
-    int totalBayar = 0;
-    
-    printf("==========================================\n");
-    printf("     SISTEM OPERASIONAL KAFETARIA IT DEL  \n");
-    printf("==========================================\n");
-    printf("DAFTAR MENU:\n");
-    printf("KODE  | MENU             | HARGA\n");
-    printf("------------------------------------------\n");
-    printf("M01   | Nasi Goreng      | Rp15.000\n");
-    printf("M02   | Ayam Penyet      | Rp18.000\n");
-    printf("M03   | Mie Goreng       | Rp12.000\n");
-    printf("D01   | Teh Manis (Es/P) | Rp5.000\n");
-    printf("D02   | Kopi Del         | Rp7.000\n");
-    printf("------------------------------------------\n");
-    printf("Ketik 'END' pada Kode Menu untuk selesai.\n\n");
+    // 1. Inisialisasi Data Menu Kafetaria
+    struct Menu daftarMenu[4] = {
+        {1, "Nasi Goreng Del", 15000},
+        {2, "Ayam Penyet", 18000},
+        {3, "Mie Gomak", 10000},
+        {4, "Teh Manis", 5000}
+    };
 
-    // Perulangan untuk mencatat pesanan
+    struct Keranjang belanja[10]; // Maksimal 10 jenis item per transaksi
+    int jumlahItemBelanja = 0;
+    int totalAkhir = 0;
+    int pilihan, qty, uangBayar;
+    char lanjut;
+
+    printf("=== SISTEM OPERASIONAL KAFETARIA IT DEL ===\n\n");
+
+    // 2. Menampilkan Menu
+    printf("%-3s | %-20s | %-10s\n", "ID", "Menu Makanan", "Harga");
+    printf("------------------------------------------\n");
+    for(int i = 0; i < 4; i++) {
+        printf("%-3d | %-20s | Rp %d\n", daftarMenu[i].id, daftarMenu[i].nama, daftarMenu[i].harga);
+    }
+    printf("------------------------------------------\n");
+
+    // 3. Proses Input Pesanan
     do {
-        printf("Masukkan Kode Menu   : ");
-        scanf("%s", kode);
+        printf("\nMasukkan ID Menu: ");
+        scanf("%d", &pilihan);
 
-        // Cek apakah user ingin mengakhiri input
-        if (strcmp(kode, "END") == 0 || strcmp(kode, "end") == 0) {
-            break;
-        }
-
-        printf("Masukkan Jumlah      : ");
-        scanf("%d", &jumlah);
-
-        // Percabangan untuk menentukan harga berdasarkan kode
-        if (strcmp(kode, "M01") == 0) {
-            subtotal = 15000 * jumlah;
-            printf("-> Nasi Goreng x%d : Rp%d\n", jumlah, subtotal);
-        } else if (strcmp(kode, "M02") == 0) {
-            subtotal = 18000 * jumlah;
-            printf("-> Ayam Penyet x%d : Rp%d\n", jumlah, subtotal);
-        } else if (strcmp(kode, "M03") == 0) {
-            subtotal = 12000 * jumlah;
-            printf("-> Mie Goreng x%d  : Rp%d\n", jumlah, subtotal);
-        } else if (strcmp(kode, "D01") == 0) {
-            subtotal = 5000 * jumlah;
-            printf("-> Teh Manis x%d   : Rp%d\n", jumlah, subtotal);
-        } else if (strcmp(kode, "D02") == 0) {
-            subtotal = 7000 * jumlah;
-            printf("-> Kopi Del x%d    : Rp%d\n", jumlah, subtotal);
+        if(pilihan < 1 || pilihan > 4) {
+            printf("ID Menu tidak tersedia!\n");
         } else {
-            printf("!! Kode Menu Tidak Dikenal !!\n");
-            subtotal = 0;
+            printf("Jumlah Porsi: ");
+            scanf("%d", &qty);
+
+            // Masukkan ke keranjang
+            int idx = pilihan - 1;
+            strcpy(belanja[jumlahItemBelanja].nama, daftarMenu[idx].nama);
+            belanja[jumlahItemBelanja].qty = qty;
+            belanja[jumlahItemBelanja].subtotal = daftarMenu[idx].harga * qty;
+            
+            totalAkhir += belanja[jumlahItemBelanja].subtotal;
+            jumlahItemBelanja++;
+
+            printf("Berhasil menambahkan ke pesanan.\n");
         }
 
-        totalBayar += subtotal;
-        printf("------------------------------------------\n");
+        printf("Tambah menu lain? (y/n): ");
+        scanf(" %c", &lanjut);
 
-    } while (1); // Terus berjalan sampai bertemu 'break' di dalam
+    } while ((lanjut == 'y' || lanjut == 'Y') && jumlahItemBelanja < 10);
 
-    // Menampilkan Struk Pembayaran
+    // 4. Output Struk Pembayaran
     printf("\n\n==========================================");
-    printf("\n          STRUK PEMBAYARAN KAFETARIA      ");
+    printf("\n          STRUK KAFETARIA IT DEL          ");
     printf("\n==========================================");
-    printf("\nTOTAL YANG HARUS DIBAYAR: Rp%d", totalBayar);
+    printf("\n%-20s %-5s %-10s", "Item", "Qty", "Subtotal");
+    printf("\n------------------------------------------");
+    
+    for(int i = 0; i < jumlahItemBelanja; i++) {
+        printf("\n%-20s %-5d Rp %-10d", belanja[i].nama, belanja[i].qty, belanja[i].subtotal);
+    }
+
+    printf("\n------------------------------------------");
+    printf("\nTOTAL YANG HARUS DIBAYAR : Rp %d", totalAkhir);
     printf("\n==========================================");
-    printf("\nTerima kasih! Selamat menikmati hidangan.\n");
+
+    // 5. Input Pembayaran & Output Kembalian
+    printf("\nMasukkan Uang Pembayaran: Rp ");
+    scanf("%d", &uangBayar);
+
+    if(uangBayar >= totalAkhir) {
+        printf("Kembalian               : Rp %d", uangBayar - totalAkhir);
+        printf("\n\nTransaksi Berhasil. Selamat Menikmati!\n");
+    } else {
+        printf("Uang tidak cukup! Kurang: Rp %d\n", totalAkhir - uangBayar);
+    }
 
     return 0;
 }

@@ -11,3 +11,8 @@ Program dijalankan pada komputer kasir kafetaria IT Del. Pengguna memasukkan **k
 * Gunakan bahasa Contoh
 * Gunakan percabangan untuk menentukan menu.
 * Gunakan perulangan untuk membaca input sampai END
+bukan pemogramna bahsa c  dengan Buatlah sebuah sistem yang mendukung operasional kafetaria IT Del.
+pemogramn ynag saya minta mengunakan bahas c
+dan nanti contoh input nya itu akan memilih angka yang berupa menu 1,2,3
+contoh dipilih menu yang kedua  atau ke 3 
+dan akna keluar output nya

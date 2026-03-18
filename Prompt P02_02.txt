@@ -9,7 +9,9 @@ nah kategorinya
 Kategori ditentukan berdasarkan posisi indeks
 Kategori A → posisi ke 1, ... dan kategori selanjutnya
 
-Programnya harus manampilkan  hanya stok yang termasuk dalam kategori yang diminta.
+1.  Jumlah total data (N).
+2.  Deret stok (s1, s2, ..., sN).
+3.  Kode kategori barang.
 
 Input Format
 Baris pertama: bilangan bulat N
@@ -22,3 +24,9 @@ Gunakan bahasa pemrograman C
 Gunakan array untuk menyimpan stok barang
 Gunakan perulangan (for) untuk membaca data dan menghitung total
 
+Tugas Buatlah program yang mampu menentukan total stok hanya untuk kategori barang yang diminta.
+buatkan sebuah  pemograman mengunakna bahsa  c dan pemograman tersebut harus di baca mengunakan input denag:
+jumlah total data(n)
+deret stok
+kode kategori barang 
+dan pertanyaannya ialah buatlah sebuah program yanng dapat atau mampu untuk menetukantotal barang yang diminta

@@ -2,56 +2,67 @@
 #include <string.h>
 
 int main() {
-    char kota[4];
-    float beratButet, beratUcok, totalBerat;
-    long hargaPerKg = 0;
-    long totalOngkir, diskon = 0;
-    char promo[50] = "Tidak Ada Promo";
+    char kota[20];
+    float beratButet, beratUcok, totalBerat, hargaPerKg, totalOngkir;
+    char promo[30];
 
-    // 1. Input Data
-    printf("Masukkan Kode Kota (MDN/JKT/BLG): ");
-    scanf("%s", kota);
-    printf("Masukkan Berat Paket Butet (kg): ");
-    scanf("%f", &beratButet);
+    printf("=== Sistem Pengiriman Del-Express ===\n");
+    printf("Ketik 'END' pada Kode Kota untuk keluar.\n\n");
 
-    // 2. Logika Penentuan Harga per Kota
-    if (strcmp(kota, "MDN") == 0) {
-        hargaPerKg = 15000;
-    } else if (strcmp(kota, "JKT") == 0) {
-        hargaPerKg = 20000;
-    } else if (strcmp(kota, "BLG") == 0) {
-        hargaPerKg = 5000;
-    } else {
-        printf("Kode Kota tidak dikenal!\n");
-        return 1;
+    while (1) {
+        printf("Masukkan Kode Kota Tujuan: ");
+        scanf("%s", kota);
+
+        // Berhenti jika input adalah END
+        if (strcmp(kota, "END") == 0) {
+            printf("Program Selesai. Terima kasih!\n");
+            break;
+        }
+
+        printf("Masukkan Berat Paket Butet (kg): ");
+        scanf("%f", &beratButet);
+
+        // Logika: Berat Ucok 2kg lebih berat dari Butet
+        beratUcok = beratButet + 2;
+        totalBerat = beratButet + beratUcok;
+
+        // Menentukan harga per kg berdasarkan kota
+        if (strcmp(kota, "MDN") == 0) {
+            hargaPerKg = 10000; // Contoh harga Medan
+        } else if (strcmp(kota, "JKT") == 0) {
+            hargaPerKg = 20000; // Contoh harga Jakarta
+        } else if (strcmp(kota, "BLG") == 0) {
+            hargaPerKg = 15000; // Contoh harga Balige
+        } else {
+            hargaPerKg = 0;
+            printf("Kota tidak terdaftar! Mengasumsikan biaya Rp 0.\n");
+        }
+
+        // Hitung ongkos kirim dasar
+        totalOngkir = totalBerat * hargaPerKg;
+
+        // Logika Promo dan Diskon
+        if (totalBerat >= 10) {
+            strcpy(promo, "Diskon 10%");
+            totalOngkir = totalOngkir * 0.90; // Potong 10%
+        } else if (totalBerat >= 5) {
+            strcpy(promo, "Diskon 5%");
+            totalOngkir = totalOngkir * 0.95; // Potong 5%
+        } else {
+            strcpy(promo, "Tidak ada promo");
+        }
+
+        // Menampilkan Struk Pembayaran
+        printf("\n------------------------------\n");
+        printf("Struk Pembayaran\n");
+        printf("Kota Tujuan: %s\n", kota);
+        printf("Berat Paket Butet: %.1f kg\n", beratButet);
+        printf("Berat Paket Ucok: %.1f kg\n", beratUcok);
+        printf("Total Berat: %.1f kg\n", totalBerat);
+        printf("Total Ongkos Kirim: Rp %.0f\n", totalOngkir);
+        printf("Promo: %s\n", promo);
+        printf("------------------------------\n\n");
     }
-
-    // 3. Perhitungan Berat (Asumsi: Barang Ucok akan lebih berat 2kg dari Butet)
-    beratUcok = beratButet + 2.0;
-    totalBerat = beratButet + beratUcok;
-
-    // 4. Hitung Total Ongkos Sebelum Promo
-    totalOngkir = totalBerat * hargaPerKg;
-
-    // 5. Logika Promo (Contoh: Diskon 10% jika berat > 10kg)
-    if (totalBerat > 10) {
-        diskon = totalOngkir * 0.10;
-        totalOngkir = totalOngkir - diskon;
-        strcpy(promo, "Diskon Hemat 10% (Berat > 10kg)");
-    }
-
-    // 6. Output Struk Pembayaran
-    printf("\n==================================\n");
-    printf("       STRUK PEMBAYARAN DEL-EXPRESS\n");
-    printf("==================================\n");
-    printf("Kota Tujuan          : %s\n", kota);
-    printf("Berat Paket Butet    : %.2f kg\n", beratButet);
-    printf("Berat Paket Ucok     : %.2f kg\n", beratUcok);
-    printf("Total Berat          : %.2f kg\n", totalBerat);
-    printf("----------------------------------\n");
-    printf("Total Ongkos Kirim   : Rp %ld\n", totalOngkir);
-    printf("Informasi Promo      : %s\n", promo);
-    printf("==================================\n");
 
     return 0;
 }

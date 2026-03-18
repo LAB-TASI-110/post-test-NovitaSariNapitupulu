@@ -36,4 +36,37 @@ JKT
 3
 BLG
 4
-END(maka kalau dia ENDmaka program akan  berhenti)
+END(maka kalau dia ENDmaka program akan  berhenti)buattkan sebuah pemograman menggunakan bahasa c Buatlah program menggunakan bahasa C untuk sistem pengiriman paket Del-Express.
+Program harus membaca input berupa:
+Kode kota tujuan
+Berat paket Butet (kg)
+Kode kota tujuan berikutnya
+Berat paket Butet berikutnya
+dan seterusnya hingga kode END.
+Setiap kali membaca satu kode kota dan berat paket Butet:
+Berat paket Ucok selalu 2 kg lebih berat dari Butet.
+Hitung total berat paket = berat Butet + berat Ucok.
+Contoh kode kota yang digunakan:
+MDN
+JKT
+BLG
+Hitung:
+Total berat
+Total ongkos kirim = total berat × harga per kg kota tujuan
+Tambahkan promo dengan ketentuan:
+Program harus menampilkan Struk Pembayaran dengan format:
+Struk Pembayaran
+Kota Tujuan: 
+Berat Paket Butet: kg
+Berat Paket Ucok:  kg
+Total Berat: kg
+Total Ongkos Kirim: Rp 
+Promo
+Contoh input:
+MDN
+5
+JKT
+3
+BLG
+4
+END(maka kalau dia ENDmaka program akan  berhenti)

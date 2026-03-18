@@ -1,43 +1,43 @@
 #include <stdio.h>
+#include <string.h> // Diperlukan untuk fungsi strcmp (membandingkan teks)
 
 int main() {
-    int n, i, kategoriDicari;
-    int totalStokKategori = 0;
+    int n, i;
+    int stok[100];            // Array untuk menyimpan deret stok
+    char kategori[100][20];   // Array 2 dimensi untuk menyimpan deret kode kategori
+    char target_kategori[20]; // Kategori yang ingin dicari
+    int total_stok_target = 0;
 
-    // 1. Input jumlah total data (N)
+    // 1. Input Jumlah Total Data (N)
     printf("Masukkan jumlah total data (N): ");
     scanf("%d", &n);
 
-    // Deklarasi array untuk menyimpan deret stok dan kategori
-    int deretStok[n];
-    int kodeKategori[n];
-
-    // 2. Input deret stok dan kategori barang
-    printf("\n--- Input Data Inventaris Rak ---\n");
-    for(i = 0; i < n; i++) {
-        printf("Barang ke-%d:\n", i + 1);
-        printf("  Jumlah stok (s%d): ", i + 1);
-        scanf("%d", &deretStok[i]);
-        printf("  Kode kategori   : ");
-        scanf("%d", &kodeKategori[i]);
+    // 2. Input Deret Stok dan Kategori
+    for (i = 0; i < n; i++) {
+        printf("\nData ke-%d:\n", i + 1);
+        printf("  Masukkan Kode Kategori: ");
+        scanf("%s", kategori[i]);
+        printf("  Masukkan Jumlah Stok  : ");
+        scanf("%d", &stok[i]);
     }
 
-    // 3. Input kategori yang ingin dicari
-    printf("\nMasukkan kode kategori yang ingin dihitung total stoknya: ");
-    scanf("%d", &kategoriDicari);
+    // 3. Input Kategori yang ingin dicari
+    printf("\n------------------------------------\n");
+    printf("Masukkan Kode Kategori yang ingin ditotal: ");
+    scanf("%s", target_kategori);
 
     // 4. Proses Filter dan Penjumlahan
-    for(i = 0; i < n; i++) {
-        // Cek apakah kategori barang saat ini sesuai dengan yang diminta
-        if(kodeKategori[i] == kategoriDicari) {
-            totalStokKategori += deretStok[i];
+    for (i = 0; i < n; i++) {
+        // strcmp mengembalikan 0 jika kedua teks sama persis
+        if (strcmp(kategori[i], target_kategori) == 0) {
+            total_stok_target += stok[i];
         }
     }
 
     // 5. Output Hasil
-    printf("\n-------------------------------------------");
-    printf("\nTotal stok untuk kategori %d adalah: %d unit", kategoriDicari, totalStokKategori);
-    printf("\n-------------------------------------------\n");
+    printf("\n====================================\n");
+    printf("Total stok untuk kategori '%s' adalah: %d\n", target_kategori, total_stok_target);
+    printf("====================================\n");
 
     return 0;
 }
